@@ -323,7 +323,7 @@ def _triage_llm(text: str, started: float):
             return None
         try:
             answer = chat(messages, timeout=min(PER_CALL_TIMEOUT, remaining - 0.5),
-                          temperature=0, max_tokens=200)
+                          temperature=0, max_tokens=800)
         except Exception as e:  # noqa: BLE001 — будь-яка помилка API -> ретрай або fallback
             delay = _retry_delay(e, attempt)
             if delay < 0:
